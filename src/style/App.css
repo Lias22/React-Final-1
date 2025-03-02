@@ -1,0 +1,408 @@
+:root {
+  --bg-color: #ffffff;
+  --text-color: #000000;
+  --button-bg: #000000;
+  --button-text: #ffffff;
+}
+
+[data-theme="dark"] {
+  --bg-color: #121212;
+  --text-color: #ffffff;
+  --button-bg: #ffffff;
+  --button-text: #000000;
+}
+
+
+
+
+/* General */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #222222;
+  color: #ffffff;
+  margin: 0;
+  padding: 0;
+}
+
+/* Navbar */
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+/* Estilos para el tema light */
+.navbar.light {
+  background: transparent;
+  background: linear-gradient(rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.6) 50%, rgba(0, 0, 0, 0) 100%);
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0.8); /* Sombra difuminada como Netflix */
+  transition: background 0.5s ease;
+}
+
+.title.light {
+  color: #000000;
+}
+
+.link.light {
+  color: #000000;
+}
+
+.link.light:hover {
+  color: #555555;
+}
+
+
+/* Estilos para el tema dark */
+.navbar.dark {
+  background-color: transparent;
+  background: linear-gradient(rgba(255, 255, 255, 0.9) 0%, rgba(0, 0, 0, 0.6) 50%, rgba(0, 0, 0, 0) 100%);
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0.8);
+}
+
+.title.dark {
+  color: #ffffff;
+}
+
+.link.dark {
+  color: #ffffff;
+}
+
+.link.dark:hover {
+  color: #cccccc;
+}
+
+.navbar h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  color: #ffcc00;
+}
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+.navbar a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+.navbar a:hover {
+  color: #ffcc00;
+}
+
+
+
+/* Home */
+.home {
+  position: relative;
+  min-height: 100vh; /* Ocupa al menos el alto de la ventana */
+  overflow: hidden; /* Oculta el desbordamiento */
+  display: flex;
+  flex-direction: column; /* Para apilar contenido verticalmente */
+  align-items: center; /* Centra horizontalmente */
+  justify-content: flex-start; /* Comienza desde arriba */
+}
+
+.home-content {
+  position: absolute; /* Por encima del video */
+  z-index: 2; /* Lo posiciona por encima del video */
+  min-width: 800px; /* Limita el ancho del contenido */
+  padding: 20px;
+  text-align: center; /* Centra el texto */
+}
+.home input {
+  padding: 0.8rem;
+  width: 80%;
+  max-width: 400px;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: linear-gradient(90deg, #555555, #f5e58c);
+  outline: none;
+  background-color: transparent;
+}
+.home button {
+  padding: 0.8rem 1.5rem;
+  background: #ffcc00;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-left: 10px;
+  border-radius: 5px;
+}
+.home button:hover {
+  background: #e6b800;
+}
+
+.background-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Hace que el video se ajuste al tamaño */
+  z-index: -1; /* Detrás del contenido */
+}
+
+/* Lista de Películas */
+.movie-list {
+  display: flex;
+  flex-wrap: wrap; /* Permite el ajuste de las tarjetas */
+  justify-content: center; /* Centra las tarjetas */
+  gap: 20px; /* Espacio entre las tarjetas */
+  margin-top: 20px; /* Margen superior para separar */
+}
+
+/* Tarjetas de Películas */
+.movie-card {
+  background: #222;
+  padding: 1rem;
+  border-radius: 8px;
+  text-align: center;
+  width: 250px;
+  transition: transform 0.1s ease-out, box-shadow 0.3s ease, background 0.3s ease;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  cursor: pointer;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.movie-card:hover {
+  transform: scale(1.1);
+  box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.6);
+}
+
+/* Imagen dentro de la tarjeta */
+.movie-card img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Efecto de profundidad con translateZ */
+.movie-card h3,
+.movie-card p {
+  transform: translateZ(30px);
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Hace que el texto también se anime */
+.movie-card:hover h3,
+.movie-card:hover p {
+  transform: translateZ(50px);
+}
+
+/* Estilo para la descripción */
+.movie-description {
+  margin-top: 10px;
+  color: #fff;
+  font-size: 0.9rem;
+  transition: opacity 0.3s ease-in-out;
+}
+
+
+
+
+/* Detalles de Película */
+.movie-detail {
+  text-align: center;
+  padding: 2rem;
+}
+.movie-detail img {
+  max-width: 100%;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+.movie-detail h1 {
+  font-size: 2rem;
+  margin: 10px 0;
+}
+.movie-detail p {
+  font-size: 1.2rem;
+  color: #ccc;
+}
+
+.featured-movies {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.featured-movies h2 {
+  font-size: 1.8rem;
+  color: #ffcc00;
+  margin-bottom: 1rem;
+}
+
+.movie-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.movies-section h2{
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 25px;
+}
+
+
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: Arial, sans-serif;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.app {
+  text-align: center;
+  padding: 20px;
+}
+
+.theme-toggle {
+  position: absolute;
+  top: 18px; /* Ajusta la distancia desde la parte superior */
+  left: 11%; /* Ajusta la distancia desde la izquierda */
+  z-index: 3; /* Más alto que el video y el contenido */
+  background: rgba(0, 0, 0, 0.6); /* Fondo oscuro semitransparente */
+  color: white; /* Texto en blanco */
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer; /* Indica que es interactivo */
+}
+
+.theme-toggle:hover {
+  opacity: 0.8;
+}
+
+
+/* Categorías */
+.categories-section {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.categories-section h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.categories-section select {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  background-color: var(--input-bg);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  outline: none;
+  transition: background 0.3s;
+}
+
+.categories-section select:hover {
+  background-color: var(--hover-bg);
+}
+
+.load-more-btn {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  background: #e50914; /* Rojo similar a Netflix */
+  color: white;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+}
+
+.load-more-btn:hover {
+  background: #b20710; /* Rojo más oscuro al pasar el mouse */
+}
+
+
+.refresh-btn {
+  margin: 20px auto; /* Centrar el botón horizontalmente */
+  padding: 12px 24px; /* Más padding para mayor tamaño */
+  font-size: 18px; /* Texto más grande */
+  font-weight: bold; /* Texto en negrita */
+  cursor: pointer;
+  border: none;
+  outline: none; /* Quitar el contorno al hacer foco */
+  background: linear-gradient(145deg, #e50914, #b20710); /* Degradado de color estilo Netflix */
+  color: white; /* Texto blanco */
+  border-radius: 50px; /* Bordes redondeados */
+  box-shadow: 0 8px 20px rgba(229, 9, 20, 0.5); /* Sombra suave */
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  display: flex;
+  justify-content: center; /* Centrar el contenido */
+  align-items: center;
+  gap: 8px; /* Espacio entre icono y texto */
+}
+
+/* Efecto hover */
+.refresh-btn:hover {
+  transform: scale(1.1); /* Aumentar tamaño */
+  box-shadow: 0 12px 30px rgba(229, 9, 20, 0.7); /* Sombra más grande */
+}
+
+/* Efecto click */
+.refresh-btn:active {
+  transform: scale(0.95); /* Reducir tamaño al presionar */
+}
+
+/* Animación de carga */
+.loading-spinner {
+  width: 18px;
+  height: 18px;
+  border: 3px solid white;
+  border-top: 3px solid transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+
+/* Responsive */
+@media (max-width: 768px) {
+  .categories-section select {
+    width: 80%;
+  }
+}
+
+
+/* 🔹 Responsive Design */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+  }
+  .navbar h1 {
+    font-size: 1.5rem;
+  }
+  .navbar ul {
+    padding: 0;
+    margin-top: 10px;
+  }
+  .home input {
+    width: 90%;
+  }
+  .movie-card {
+    width: 90%;
+  }
+}
